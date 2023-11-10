@@ -1,33 +1,26 @@
-// ToDoForm.jsx
-
 import React from 'react';
-import {View, TextInput, Button, StyleSheet} from 'react-native';
-
-function ToDoForm() {
-    return (
-        <View style={styles.form}>
-      <TextInput style={styles.input} placeholder="Add a new task..." />
-      <Button title="Add" />
-        </View>
-    );
+import {Pressable, View, Text, ScrollView, StyleSheet} from 'react-native';
+function ToDoList({tasks}) {
+  return (
+    <ScrollView>
+      {tasks.map((task, index) => (
+        <Pressable key={index}>
+          <View style={styles.task}>
+            <Text style={styles.taskText}>{task}</Text>
+          </View>
+        </Pressable>
+      ))}
+    </ScrollView>
+  );
 }
-
 const styles = StyleSheet.create({
-    form: {
-        flexDirection: 'row',
-    justifyContent: 'space-between',
-        alignItems: 'center',
-        marginHorizontal: 20,
-        marginTop: 20,
-    },
-    input: {
-        flex: 1,
-        borderWidth: 1,
-        borderColor: '#ccc',
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        marginRight: 10,
-    },
+  task: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderColor: '#ccc',
+  },
+  taskText: {
+    fontSize: 16,
+  },
 });
-
-export default ToDoForm;
+export default ToDoList;
